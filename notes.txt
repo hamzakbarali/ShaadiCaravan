@@ -1,9 +1,0 @@
-Make CRUD for user. Which includes:
-
-1. Create API for user (GET)
-
-2. Read API for user (POST)
-
-3. Update API for user (PUT)
-
-Submit your code and screenshots of yourÂ requests response on postman.

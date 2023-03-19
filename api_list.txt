@@ -1,0 +1,66 @@
+*********************Vendor API's*********************
+1.   POST:   Vendor Registration                (Done)
+
+2.   POST:   Vendor Login                       (Done)
+
+3.   PATCH:  Vendor Account Delete              (Done)
+
+4.   GET:    Get Vendor Profile                 (Done)
+
+5.   PUT:    Update Vendor Profile              (Done)
+
+6:   GET:    Get Vendor Service                 (Not Done)
+
+7:   POST:   Create Vendor Service              (Doing)
+
+8:   PUT:    Update Vendor Service              (Not Done)
+
+9:   PATCH:  Delete Vendor Service              (Not Done)
+
+10:  GET:    Get Vendor Service Form            (Not Done)
+
+11:  POST:   Create Vendor Service Form         (Not Done)
+
+12:  PUT:    Update Vendor Service Form         (Not Done)
+
+13:  PATCH:  Delete Vendor Service Form         (Not Done)
+
+14:  GET:    Get Vendor Reviews                 (Not Done)
+
+15:  GET:    Get Vendor Appointments            (Not Done)
+
+16:  PUT:    Update Vendor Appointments         (Not Done)
+
+17:  PATCH:  Disapprove Vendor Appointment      (Not Done)
+
+18:  PATCH:  Approve Vendor Appointment         (Not Done)
+
+19:  GET:    Get All Service Bookings           (Not Done)
+
+
+*********************User API's*********************
+1.   POST:  User Registration                   (Done)
+
+2.   POST:  User Login                          (Done)
+
+3.   PATCH: User Account Delete                 (Done)
+
+4.   GET:   Get User Profile                    (Done)
+
+5.   PUT:   Update User Profile                 (Done)
+
+6:   POST:  Post Vendor Review                  (Not Done)
+
+7:   GET:  Get Your Own Appointment with Vendor (Not Done)
+
+8:   POST: Request Appointment with Vendor      (Not Done)
+
+9:   PATCH: Delete appointment with Vendor      (Not Done)
+
+10:  PATCH: Update appointment with Vendor      (Not Done)
+
+11:  POST:  Book Service                        (Not Done)
+
+12:  GET:   Get Booked Service                  (Not Done)
+
+

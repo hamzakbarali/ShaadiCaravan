@@ -1,46 +1,79 @@
 import mongoose from "mongoose";
-import {validateEmail, validatePassword} from "./user.models.utils.js";
 
-const UserSchema = new mongoose.Schema(
-{
+const UserSchema = mongoose.Schema({
 	firstName: {
 		type: String,
 		required: true,
-		min: 2,
-		max: 50,
+		minLength: [2, "|First Name must be at least 2 characters. Got '{VALUE}'"],
+		trim: true
 	},
-	lastName: {
+	lastName : {
 		type: String,
+		trim: true,
 		required: true,
-		min: 2,
-		max: 50,
+		minLength: [2, "|Last Name must be at least 2 characters. Got '{VALUE}'"],
 	},
 	email: {
-		type: String,
-		required: true,
-		min: 8,
-		max: 65,
-		unique: true,
-		match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Please, choose a valid email address"],
-		validate: [validateEmail, 'Please, choose a valid email address']
+		type      : String,
+		trim      : true,
+		required  : [true, "|Please, enter your email."],
+		minLength : [8, "|Your email should be at least 8 characters long. Got '{VALUE}'"],
+		maxLength : 65,
+		unique    : true
 	},
 	password: {
-		type: String,
-		required: true,
-		min: 8,
-		max: 65,
-		match: [/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/, 'Please, choose a password that is at least 8 characters long, has at least one uppercase letter, at least one lowercase letter, at least one digit, and at least one special character'],
-		validate: [validatePassword, 'Please, choose a password that is at least 8 characters long, has at least one uppercase letter, at least one lowercase letter, at least one digit, and at least one special character']
+		type      : String,
+		trim      : true,
+		required  : [true, "|Please, enter your password."],
+		minLength : [8, "|Your password should be at least 8 characters long."],
+		maxLength : 65
 	},
-	userRole: {
+	accountType: {
+		type      : String,
+		trim      : true,
+		required  : true,
+		enum    : {
+			values : ["vendor", "user", "admin"],
+			message: "|{VALUE} is not valid."
+		},
+	},
+	contactNumber: {
+		type      : String,
+		trim      : true,
+		required  : [true, "|Please, enter your contact number."],
+		minLength : [7, "|Your contact number should be at least 7 digits. Got `{VALUE}`"],
+		maxLength : 65,
+		unique    : true 
+	},
+	language: {
+		type      : String,
+		trim      : true,
+		required  : [true, "|Please, choose a language for your account."],
+		minLength : 2,
+		maxLength : 4,
+	},
+	profilePicture: {
 		type: String,
-		required: true,
+		trim: true,
+		default: ""
+	},
+	softDelete: {
+		type: Boolean,
+		default: false
+	},
+	deletionApproved: {
+		type: Boolean,
+		default: false
+	},
+	deleteRequest: {
+		type: Boolean,
+		default: false
 	}
-}, 
+},
 {
-	timestamps: true,
+	timestamps: true
 });
 
 const User = mongoose.model("User", UserSchema);
 
-export default User;
+export default User;	

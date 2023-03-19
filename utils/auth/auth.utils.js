@@ -12,7 +12,7 @@ export async function createAccessToken(id, firstName, lastName, email){
 			};
 			const secretOrPrivateKey = process.env.ACCESS_TOKEN_PRIVATE_KEY;
 			const options = {
-				"expiresIn" : "30s", // Change this back to 1h
+				"expiresIn" : "1h", // Change this back to 1h
 				"issuer" : "ShaadiCaravan",
 				"audience" : id.toString()
 			};

@@ -15,7 +15,7 @@ export function verifyAccessToken(req, res, next){
 		}
 	} 
 	else{
-		return res.status(401).json({"error": "You are not authenticated."});
+		return res.status(403).json({"error": "You are not authenticated."});
 	}
 }
 
