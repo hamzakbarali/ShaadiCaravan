@@ -2,10 +2,12 @@ import {ERRORS} from "./../../utils/errors/errors.js";
 import {ACCOUNT_TYPE} from "./../../utils/constants/constants.js";
 import Vendor from "./../../models/vendor/Vendor.js";
 import User from "./../../models/user/User.js";
+import Admin from "./../../models/admin/Admin.js"
 import bcrypt from "bcrypt";
 
 export async function getProfile(req, res, next){
 	const {id, accountType} = req.params;
+	//console.log("HERE A");
 	if(id && accountType){
 		try{
 			if(accountType == ACCOUNT_TYPE.vendor){
@@ -66,7 +68,29 @@ export async function getProfile(req, res, next){
 					});
 				}
 			}
-			// When account type is neither vendor or user
+			else if(accountType == ACCOUNT_TYPE.admin){
+				const doesAdminExist = await Admin.find({_id: id, accountType: accountType});
+				if(doesAdminExist.length == 1){
+					const retrievedUser = doesAdminExist[0];
+					return res.status(200).json({
+						id: retrievedUser._id,
+						firstName: retrievedUser.firstName,
+						lastName : retrievedUser.lastName,
+						email    : retrievedUser.email,
+						accountType: retrievedUser.accountType,
+						contactNumber: retrievedUser.contactNumber,
+						language: retrievedUser.language,
+					}); 
+				}
+				// When Admin whose id and account type are provided does not exist
+				else{
+					return res.status(400).json({
+						errorCode: ERRORS.invalid_information,
+						errorMessage: "Invalid id or account type"
+					});
+				}
+			}
+			// When account type is neither admin or vendor or user
 			else{
 				return res.status(400).json({
 					errorCode: ERRORS.invalid_information,

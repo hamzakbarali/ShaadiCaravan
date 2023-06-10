@@ -4,7 +4,8 @@ import {verifyAccessToken,
 import {createForm,
 		getFormById,
 		updateForm,
-		deleteForm} from "./../../controllers/form/form.controllers.js";
+		deleteForm,
+	 	submitForm} from "./../../controllers/form/form.controllers.js";
 
 const formRouter = express.Router();
 
@@ -15,5 +16,7 @@ formRouter.get("/get-form", verifyAccessToken, getFormById);
 formRouter.put("/update-form/:serviceId", verifyAccessToken, updateForm);
 
 formRouter.put("/delete-form/:serviceId", verifyAccessToken, deleteForm);
+
+formRouter.post("/submit-form/:serviceId/:formId", verifyAccessToken, submitForm);
 
 export default formRouter;

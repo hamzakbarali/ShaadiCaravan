@@ -1,0 +1,1 @@
+export {default as WeddingPlannerCard} from "./components/wedding_planner_card/WeddingPlannerCard.jsx";

@@ -170,3 +170,57 @@ export async function deleteForm(req, res, next){
 		});
 	}
 }
+
+export async function submitForm(req, res, next) {
+	const { serviceId, formId } = req.params;
+	const formData = req.body;
+  
+	if (serviceId && formId && formData) {
+	  	try {
+			const formToUpdate = await Form.findOne({
+			serviceId: serviceId.trim(),
+			_id: formId
+			});
+
+			if (!formToUpdate) {
+			return res.status(404).json({
+				errorCode: ERRORS.error_getting_form,
+				errorMessage: "Form not found."
+			});
+			}
+			const formFields = formToUpdate.formFields;
+			const requiredFields = formFields.filter(field => field.required);
+			const missingFields = requiredFields.filter(field => !(field.name in formData));
+  
+			if (missingFields.length === 0) {
+			const userSubmission = {
+				userId: req.user.id, // Assuming you have user authentication and can access the user's ID
+				formData: formData
+			};
+			formToUpdate.responses.push(userSubmission);
+			// Save the updated form
+			const updatedForm = await formToUpdate.save();
+	
+			return res.status(200).json(updatedForm);
+			} else {
+			return res.status(400).json({
+				errorCode: ERRORS.error_missing_required_fields,
+				errorMessage: "Missing required fields.",
+				missingFields: missingFields.map(field => field.name)
+			});
+			}
+		} 
+		catch (err) {
+			return res.status(500).json({
+			errorCode: ERRORS.error_saving_form,
+			errorMessage: "Error saving form."
+			});
+		}
+	} 
+	else {
+		return res.status(400).json({
+			errorCode: ERRORS.request_data_not_given,
+			errorMessage: "Invalid Request"
+		});
+	}
+}  

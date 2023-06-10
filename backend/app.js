@@ -9,6 +9,8 @@ import reviewRouter  from "./routes/review/review.routes.js";
 import profileRouter from "./routes/profile/profile.routes.js";
 import serviceRouter from "./routes/service/service.routes.js";
 import formRouter    from "./routes/form/form.routes.js"; 
+import adminRouter 	 from "./routes/admin/admin.routes.js";
+import bookingRouter from "./routes/booking/booking.routes.js";
 
 // Preliminary Setup //
 const app         = express();
@@ -45,6 +47,12 @@ app.use("/api/review", reviewRouter);
 
 // Form Routes //
 app.use("/api/form", formRouter);
+
+// Admin Routes //
+app.use("/api/admin", adminRouter);
+
+// Booking Routes //
+app.use("/api/booking", bookingRouter);
 
 
 export default app;

@@ -27,7 +27,6 @@ const ServiceSchema = mongoose.Schema({
 		required  : [true, "|Please, enter the business name."],
 		minLength : [2, "|The business name should be at least 2 characters long. Got '{VALUE}'"],
 		maxLength : [100],
-		unique    : true
 	},
 	businessType:{
 		type      : String,

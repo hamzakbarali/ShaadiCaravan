@@ -12,6 +12,9 @@ export const ERRORS = {
 	error_when_db_returns_empty        : 10, // When passed data does not return a result from the db
 	error_creating_form                : 11, // When error occurs in creating service form
 	error_getting_form                 : 12, // When error occurs in fetching service's form
-	// Errors below are the latest & most accurate ones
-	
+	registration_data_duplication	   : 13, // When user provides duplicate values in registration form
+	expired_access_token               : 14,
+	expired_refresh_token              : 15, 
+	error_creating_token               : 16,   
+	error_creating_booking             : 17,
 };

@@ -53,7 +53,7 @@ const VendorSchema = mongoose.Schema({
 		trim      : true,
 		required  : [true, "|Please, choose a language for your account."],
 		minLength : 2,
-		maxLength : 4,
+		maxLength : 40,
 	},
 	country: {
 		type      : String,
@@ -83,7 +83,7 @@ const VendorSchema = mongoose.Schema({
 		trim      : true,
 		required  : [true, "|Please, choose a business type."],
 		enum : {
-			values : ["wedding-hall", "catering", "jewelry", "clothes", "decoration", "furniture"],
+			values : ["wedding-hall", "catering", "jewelry", "wedding-clothes", "wedding-hall-decoration", "furniture"],
 			message: "{VALUE} is not valid"
 		}
 	},

@@ -1,0 +1,1 @@
+export {default as WindowItemCard} from "./components/window_item_card/WindowItemCard.jsx";

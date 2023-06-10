@@ -13,6 +13,10 @@ const FormSchema = mongoose.Schema({
 	softDelete: {
 		type: Boolean,
 		default: false
+	},
+	responses: {
+		type: Array,
+		default: []
 	}
 },
 {

@@ -50,7 +50,7 @@ const UserSchema = mongoose.Schema({
 		trim      : true,
 		required  : [true, "|Please, choose a language for your account."],
 		minLength : 2,
-		maxLength : 4,
+		maxLength : 40,
 	},
 	profilePicture: {
 		type: String,
