@@ -26,9 +26,9 @@ export default function Services(props){
 						return (
 							<Link 
 								to={FRONTEND_PATH_URLS.specificservice + service._id} 
-								key={service.businessName}
+								key={service._id}
 							>
-								<ServiceCard key={service.businessName} businessName={service.businessName.replace(/-/g, " ")} img={HallImg} location="Karachi" rating="3.7/5" reviews="(43)"/>
+								<ServiceCard key={service._id} businessName={service.businessName.replace(/-/g, " ")} img={HallImg} location="Karachi" rating="3.7/5" reviews="(43)"/>
 							</Link>
 						);
 					})}

@@ -8,7 +8,7 @@ export async function getServicesByServiceType(req, res, next){
 	const {serviceType} = req.params;
 	try{
 		const fetchedServices = await Service.find({businessType: serviceType});
-		console.log("HERE A", fetchedServices);
+		// console.log("HERE A", fetchedServices);
 		if(fetchedServices.length > 0){
 			return res.status(200).json({
 				services: fetchedServices,
@@ -16,14 +16,14 @@ export async function getServicesByServiceType(req, res, next){
 			});
 		}
 		else{
-			console.log("HERE B", "No service found");	
+			// console.log("HERE B", "No service found");	
 			return res.status(400).json({
 				success: false
 			});
 		}
 	}
 	catch(err){
-		console.log("HERE C", err);	
+		// console.log("HERE C", err);	
 		return res.status(400).json({
 			success: false
 		});
